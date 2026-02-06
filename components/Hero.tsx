@@ -3,6 +3,11 @@ import React from 'react';
 import { Search } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const scrollToDestinations = () => {
+    const el = document.getElementById('destinations');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
@@ -32,8 +37,11 @@ const Hero: React.FC = () => {
               className="bg-transparent w-full outline-none text-slate-800 placeholder-slate-500 font-medium"
             />
           </div>
-          <button className="bg-amber-600 hover:bg-amber-700 text-white px-10 py-4 rounded-xl md:rounded-full font-bold text-lg transition-all shadow-lg active:scale-95">
-            探索新疆
+          <button 
+            onClick={scrollToDestinations}
+            className="bg-amber-600 hover:bg-amber-700 text-white px-10 py-4 rounded-xl md:rounded-full font-bold text-lg transition-all shadow-lg active:scale-95"
+          >
+            探索目的地
           </button>
         </div>
 
@@ -53,7 +61,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer" onClick={scrollToDestinations}>
         <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
           <div className="w-1 h-3 bg-white rounded-full"></div>
         </div>

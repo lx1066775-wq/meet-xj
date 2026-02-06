@@ -17,11 +17,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .text-gradient {
-            background: linear-gradient(to right, #d97706, #b45309);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -43,6 +38,22 @@
     </script>
     <!-- SaleSmartly Customer Service Script -->
     <script src="https://plugin-code.salesmartly.com/js/project_539613_556595_1763343884.js"></script>
+    <script>
+      // 全局客服唤起函数
+      window.openChat = function() {
+        if (window.salesmartly && typeof window.salesmartly.openChat === 'function') {
+          window.salesmartly.openChat();
+        } else {
+          // 如果插件自带的 openChat 没加载好，尝试模拟点击其可能生成的气泡
+          const bubble = document.querySelector('.ss-chat-icon') || document.querySelector('[id*="salesmartly"]');
+          if (bubble) {
+            bubble.click();
+          } else {
+            console.log('客服系统正在连接中...');
+          }
+        }
+      };
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <div id="root"></div>

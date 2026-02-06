@@ -4,6 +4,10 @@ import { ITINERARIES } from '../constants';
 import { Calendar, MapPin, Star } from 'lucide-react';
 
 const Itineraries: React.FC = () => {
+  const handleConsult = () => {
+    if ((window as any).openChat) (window as any).openChat();
+  };
+
   return (
     <section id="itineraries" className="py-24 bg-slate-50">
       <div className="container mx-auto px-4">
@@ -61,8 +65,11 @@ const Itineraries: React.FC = () => {
                     <span className="text-slate-400 text-sm">起价</span>
                     <div className="text-2xl font-bold text-amber-600">¥{item.price}<span className="text-sm font-normal text-slate-500">/人</span></div>
                   </div>
-                  <button className="bg-slate-900 text-white px-6 py-2 rounded-full font-bold hover:bg-amber-600 transition-colors">
-                    查看详情
+                  <button 
+                    onClick={handleConsult}
+                    className="bg-slate-900 text-white px-6 py-2 rounded-full font-bold hover:bg-amber-600 transition-colors"
+                  >
+                    详情咨询
                   </button>
                 </div>
               </div>

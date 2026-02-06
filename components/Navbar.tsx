@@ -21,6 +21,10 @@ const Navbar: React.FC = () => {
     { name: '关于我们', href: '#about' },
   ];
 
+  const handleConsult = () => {
+    if ((window as any).openChat) (window as any).openChat();
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -40,7 +44,10 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <button className="bg-amber-600 text-white px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-amber-700 transition-colors">
+          <button 
+            onClick={handleConsult}
+            className="bg-amber-600 text-white px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-amber-700 transition-colors"
+          >
             <PhoneCall size={18} />
             立即咨询
           </button>
@@ -68,9 +75,12 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <button className="bg-amber-600 text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 mt-2">
+          <button 
+            onClick={() => { setIsMenuOpen(false); handleConsult(); }}
+            className="bg-amber-600 text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 mt-2"
+          >
             <PhoneCall size={18} />
-            联系我们
+            联系客服
           </button>
         </div>
       )}

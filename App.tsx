@@ -8,6 +8,10 @@ import About from './components/About';
 import Footer from './components/Footer';
 
 function App() {
+  const handleConsult = () => {
+    if ((window as any).openChat) (window as any).openChat();
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -23,11 +27,17 @@ function App() {
             准备好开启您的新疆之旅了吗？
           </h2>
           <div className="flex flex-col md:flex-row justify-center gap-4">
-            <button className="bg-white text-amber-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-slate-50 transition-colors shadow-xl">
+            <button 
+              onClick={handleConsult}
+              className="bg-white text-amber-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-slate-50 transition-colors shadow-xl"
+            >
               获取免费定制方案
             </button>
-            <button className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-colors">
-              查看更多游记
+            <button 
+              onClick={handleConsult}
+              className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-colors"
+            >
+              咨询专业向导
             </button>
           </div>
         </div>
